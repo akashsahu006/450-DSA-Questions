@@ -1,0 +1,22 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+
+//just keep checking next node data if found same change reference of current->next == nextt->next
+
+void removeDuplicates(struct Node* head)
+{
+    struct Node *nextt=head;
+    struct Node *current=head;
+    while(current){
+        if(nextt->next == NULL){
+            break;
+        }
+        nextt=current->next;
+        if(current->data == nextt->data){
+            current->next=nextt->next;
+        }
+        else{
+            current=current->next;
+        }
+    }
+    
+}
