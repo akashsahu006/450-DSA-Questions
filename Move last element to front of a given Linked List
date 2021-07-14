@@ -1,0 +1,65 @@
+Question Link:- https://www.geeksforgeeks.org/move-last-element-to-front-of-a-given-linked-list/
+//no question to test. only article
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node
+{
+    int data;
+    struct Node *next;
+}*first;
+
+void create(int A[], int n)
+{
+    int i;
+    struct Node *t,*last;
+    first= new Node;
+    first-> data=A[0];
+    first->next=NULL;
+    last= first;
+
+    for(i=1;i<n;i++){
+        t= new Node;
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void Display(struct Node *p)
+{
+    while(p){
+        cout<<p->data<<"\n";
+        p=p->next;
+    }
+}
+
+
+Node* lastToFirst( struct Node *p){
+    struct Node *current=p;
+    struct Node *next=NULL, *prev=NULL;
+    while(current->next){
+        next=current->next;
+
+        prev=current;
+        current=next;
+        
+    }
+    prev->next = NULL;
+    current->next=p;
+    return current;
+}
+int main()
+{
+    int A[]={3,5,7,10,15,8,12,20};
+
+    create(A, 8);
+
+    struct Node *temp=lastToFirst(first);
+    Display(temp);
+
+    return 0;
+}
