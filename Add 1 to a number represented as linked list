@@ -1,0 +1,53 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+
+
+Node* reverse(struct Node *p){
+        struct Node *current = p;
+        struct Node *prev=NULL, *nextt=NULL;
+        while(current){
+            nextt=current->next;
+            current->next= prev;
+            
+            prev=current;
+            current=nextt;
+            
+        }
+        p=prev;
+        return p;
+}
+class Solution
+{
+    public:
+    Node* addOne(Node *head) 
+    {
+        // Your Code here
+        // return head of list after adding one
+        
+        //reversed the list here
+        
+        head=reverse(head);
+        struct Node *temp=head;
+        
+        // if the digit is 9 making it 0
+        while(head){
+            if(head->data == 9){
+                if(head->next == NULL){
+                    head->data++;
+                }
+                else{
+                    head->data =0;
+                }
+            }
+            else{
+                head-> data++;
+                break;
+            }
+            head=head->next;
+        }
+        
+        //again reversing list
+        temp=reverse(temp);
+        return temp;
+        
+    }
+};
