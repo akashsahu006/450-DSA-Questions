@@ -1,0 +1,52 @@
+Question Link:- Remove loop in Linked List
+
+class Solution
+{
+    public:
+    //Function to remove a loop in the linked list.
+    void removeLoop(Node* head)
+    {
+        // code here
+        // just remove the loop without losing any nodes
+        struct Node *slow=head, *fast=head;
+        
+        // This part is finding if there is a loop or not
+        bool loop=false;
+        while(slow){
+            slow=slow->next;
+            if(fast->next!=NULL){
+                fast=fast->next;
+            }
+            else{
+                break;
+            }
+            if(fast->next!=NULL){
+                fast=fast->next;
+            }
+            else{
+                break;
+            }
+            if(fast==slow){
+                loop=true;
+                break;
+            }
+        }
+        if(loop){
+        
+            //This part is finding the value of node connected to the last node
+            slow=head;
+            while(slow!=fast){
+                slow=slow->next;
+                fast=fast->next;
+            }
+            
+            //This part is changing the last node next reference to NULL to stop the loop
+            
+            head=slow->next;
+            while(head->next != slow){
+                head=head->next;
+            }
+            head->next=NULL;
+        }
+    }
+};
