@@ -1,0 +1,42 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+
+
+class Solution
+{
+    public:
+    //Function to remove duplicates from unsorted linked list.
+    Node * removeDuplicates( Node *head) 
+    {
+     // your code goes here
+        struct Node *current=head;
+        struct Node *nextt=NULL;
+        struct Node *prev=NULL;
+        set<int> s;
+        while(current){
+            nextt=current->next;
+            if(s.count(current->data) == 0){
+                s.insert(current->data);
+                
+                
+                prev=current;
+                current=nextt;
+            }
+            else{
+                //code to skip the element by changing node
+                if(nextt){
+                    prev->next = nextt;
+                
+                
+                    current=nextt;
+                    nextt=nextt->next;
+                }
+                //if last element is repetetive
+                else{
+                    prev->next = NULL;
+                    current=nextt;
+                }
+            }
+        }
+        return head;
+    }
+};
