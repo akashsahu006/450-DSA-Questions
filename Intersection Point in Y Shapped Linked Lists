@@ -1,0 +1,35 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
+
+
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    int length1=1,length2=1;
+    struct Node *p=head1 , *q=head2;
+    while(p){
+        p=p->next;
+        length1++;
+    }
+    while(q){
+        q=q->next;
+        length2++;
+    }
+    int diff=abs(length1-length2);
+    p=head1;
+    q=head2;
+    if(length1>length2){
+        while(diff--){
+            p=p->next;
+        }
+    }
+    else{
+        while(diff--){
+            q=q->next;
+        }
+    }
+    while(p != q){
+        p=p->next;
+        q=q->next;
+    }
+    return p->data;
+}
