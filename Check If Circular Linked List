@@ -1,0 +1,14 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/circular-linked-list/1
+
+
+bool isCircular(struct Node *head){
+    //code here
+    struct Node *p=head;
+    while(p){
+        if(p->next == head){
+            return 1;
+        }
+        p=p->next;
+    }
+    return 0;
+}
