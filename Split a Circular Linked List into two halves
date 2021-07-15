@@ -1,0 +1,56 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1#
+
+
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    // your code goes here
+    struct Node *p=head, *q = NULL;
+    int count=1;
+    while(p){
+        if(p->next == head){
+            break;
+        }
+        count++;
+        p = p->next;
+    }
+    *head1_ref = head;
+    p=head;
+    if(count%2==1){
+        count = count/2;
+        while(count){
+            p=p->next;
+            count--;
+        }
+        q = p->next;
+        *head2_ref = q;
+        p->next = head;
+
+        while(q){
+            if(q->next == head){
+                break;
+            }
+            q=q->next;
+        }
+        q->next = *head2_ref;
+    }
+    else{
+        count = count/2;
+        count--;
+        while(count){
+            p=p->next;
+            count--;
+        }
+        q = p->next;
+        *head2_ref = q;
+        p->next = head;
+
+        while(q){
+            if(q->next == head){
+                break;
+            }
+            q=q->next;
+        }
+        q->next = *head2_ref;
+    }
+    
+}
