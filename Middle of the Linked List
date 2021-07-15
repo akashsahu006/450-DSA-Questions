@@ -1,0 +1,30 @@
+Question Link:- https://leetcode.com/problems/middle-of-the-linked-list/submissions/
+
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        struct ListNode* p=head;
+        int count=0;
+        while(p){
+            p=p->next;
+            count++;
+        }
+        count++;
+        p=head;
+        if(count%2==0){
+            count/=2;
+            count--;
+            while(count--){
+                p=p->next;
+            }
+        }
+        else{
+            count/=2;
+            while(count--){
+                p=p->next;
+            }
+        }
+        return p;
+    }
+};
