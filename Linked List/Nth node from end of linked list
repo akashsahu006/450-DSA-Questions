@@ -1,0 +1,23 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
+
+
+int getNthFromLast(struct Node *head, int n)
+{
+    struct Node *p=head;
+    int len=0;
+    while(p){
+        len++;
+        p=p->next;
+    }
+    p=head;
+    int x= len-n;
+    while(x-- && p){
+        p=p->next;
+    }
+    if(x==-1){
+        return p->data;
+    }
+    else{
+        return -1;
+    }
+}
