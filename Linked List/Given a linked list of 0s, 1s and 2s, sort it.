@@ -1,0 +1,44 @@
+Question Link:- https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+
+
+class Solution
+{
+    public:
+    //Function to sort a linked list of 0s, 1s and 2s.
+    Node* segregate(Node *head) {
+        
+        // Add code here
+        int zeroes=0,ones=0,twos=0;
+        struct Node* p=head;
+        while(p){
+            if(p->data == 0){
+                zeroes++;
+            }
+            else if(p->data == 1){
+                ones++;
+            }
+            else{
+                twos++;
+            }
+            p=p->next;
+        }
+        p=head;
+        while(p){
+            if(zeroes>0){
+                p->data =0;
+                zeroes--;
+            }
+            else if( ones>0){
+                p->data = 1;
+                ones--;
+            }
+            else{
+                p->data =2;
+                twos--;
+            }
+            p = p->next;
+        }
+        return head;
+        
+    }
+};
